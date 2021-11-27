@@ -1,0 +1,10 @@
+# TEMPORAL FILES
+.DS_Store
+
+# IDE FILES
+.idea/
+
+# IMAGES EXTENSIONS
+.jpg
+.jpeg
+.png
