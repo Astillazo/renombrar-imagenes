@@ -1,5 +1,6 @@
 # TEMPORAL FILES
 .DS_Store
+__pycache__
 
 # IDE FILES
 .idea/

@@ -1,3 +1,4 @@
+# coding=utf-8
 import os, re, argparse
 
 
@@ -21,11 +22,10 @@ def rename_images_keeping_size(prefix: str, folder: str, keep_remaining: bool) -
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--prefix', required=True, type=str,
-                        help='Texto que precede al tamaño y extensión del archivo que tiene '
-                             'actualmente')
+                        help='Texto que precede al tamaño y extensión del archivo que tiene actualmente')
     parser.add_argument('--folder', required=True, type=str,
-                        help='Nombre de la carpeta donde se encuentran las imágenes. Debe de estar'
-                             ' en la misma carpeta que este archivo.')
+                        help='Nombre de la carpeta donde se encuentran las imágenes. Debe de estar en la misma carpeta '
+                             'que este archivo.')
     parser.add_argument('--keep_name_remaining', default=False, type=str,
                         help='Mantener el nombre restante de la imagen.')
     parser.add_argument('--action', type=str, default='rename-keeping-size',
