@@ -1,4 +1,5 @@
 # coding=utf-8
+import logging
 import os, re, argparse
 
 
@@ -8,18 +9,22 @@ def rename_images_keeping_size(prefix: str, folder: str, keep_remaining: bool) -
 
     for filename in list_of_files:
         match1 = re.search(r'(\d+x\d+)', filename)
-        match2 = re.search(r'(\..*$)', filename)
+        match2 = re.search(r'(\..{3,4})$', filename)
         size = f'_{match1.group(1)}' if match1 else ''
         extension = match2.group(1) if match2 else False
 
         if extension:
-            current_name = os.path.join(base_dir, filename)
+            logging.info(f'Se va a cambiar el nombre a la imagen `{filename}`')
+            current_path = os.path.join(base_dir, filename)
             keeping_name = filename.replace(extension, '') if keep_remaining else ''
-            next_name = os.path.join(base_dir, f'{prefix}{size}{keeping_name}{extension}')
-            os.rename(current_name, next_name)
+            next_name = f'{prefix}{size}{keeping_name}{extension}'
+            next_path = os.path.join(base_dir, next_name)
+            os.rename(current_path, next_path)
+            logging.info(f'El nuevo nombre es `{next_name}`')
 
 
 def main() -> None:
+    logging.getLogger().setLevel(logging.INFO)
     parser = argparse.ArgumentParser()
     parser.add_argument('--prefix', required=True, type=str,
                         help='Texto que precede al tamaño y extensión del archivo que tiene actualmente')
