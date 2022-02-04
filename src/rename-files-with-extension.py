@@ -15,7 +15,7 @@ def get_list_inside_dir_and_dir_path(folder: str) -> None:
 
 
 def get_extension_from_filename(filename: str) -> str:
-    match = re.search(r'(\..{3,4})$', filename)
+    match = re.search(r'(\..{3,4})$', filename, re.IGNORECASE)
     return match.group(1) if match else False
 
 
@@ -23,7 +23,7 @@ def rename_images_keeping_size(prefix: str, folder: str, keep_remaining: bool) -
     base_dir, list_of_items = get_list_inside_dir_and_dir_path(folder=folder)
 
     for filename in list_of_items:
-        match = re.search(r'(\d+x\d+)', filename)
+        match = re.search(r'(\d+x\d+)', filename, re.IGNORECASE)
         size = f'_{match.group(1)}' if match else ''
         extension = get_extension_from_filename(filename=filename)
 
