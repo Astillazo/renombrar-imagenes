@@ -32,7 +32,7 @@ def rename_images_keeping_size(prefix: str, folder: str, keep_remaining: bool) -
             current_path = join(base_dir, filename)
             keeping_name = filename.replace(
                 extension, '') if keep_remaining else ''
-            next_name = f'{prefix}{size}{keeping_name}{extension}'
+            next_name = f'{prefix}{size.replace("X", "x")}{keeping_name}{extension}'
             next_path = join(base_dir, next_name)
             rename(current_path, next_path)
             logging.info(f'El nuevo nombre es `{next_name}`')
