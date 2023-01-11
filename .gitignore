@@ -1,0 +1,15 @@
+# TEMPORAL FILES
+.DS_Store
+__pycache__
+
+# IDE FILES
+.idea/
+
+# IMAGES EXTENSIONS
+.jpg
+.jpeg
+.png
+
+# VSCODE
+.devcontainer
+.vscode
